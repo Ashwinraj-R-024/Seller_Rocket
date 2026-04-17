@@ -32,7 +32,7 @@ function LeadForm() {
     if (!validate()) return;
 
     try {
-      await axios.post("http://localhost:5000/api/leads", form);
+      await axios.post("https://seller-rocket-sgzb.onrender.com/api/leads", form);
       alert("Lead submitted!");
     } catch (err) {
       alert("Error submitting form");
