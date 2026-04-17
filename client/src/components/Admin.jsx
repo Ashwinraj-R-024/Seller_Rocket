@@ -23,10 +23,9 @@ function Admin() {
   }, [platform]);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="admin-section">
       <h2>Admin - Leads</h2>
 
-      {/* Filter */}
       <select onChange={(e) => setPlatform(e.target.value)}>
         <option value="">All</option>
         <option value="Amazon">Amazon</option>
@@ -35,30 +34,31 @@ function Admin() {
         <option value="WordPress">WordPress</option>
       </select>
 
-      {/* Table */}
-      <table border="1" cellPadding="10" style={{ marginTop: "20px" }} cellSpacing={2} minWidth="100%">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Platform</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {leads.map((lead) => (
-            <tr key={lead._id}>
-              <td>{lead.name}</td>
-              <td>{lead.phone}</td>
-              <td>{lead.email}</td>
-              <td>{lead.platform}</td>
-              <td>{lead.status}</td>
+      <div className="table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Platform</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {leads.map((lead) => (
+              <tr key={lead._id}>
+                <td>{lead.name}</td>
+                <td>{lead.phone}</td>
+                <td>{lead.email}</td>
+                <td>{lead.platform}</td>
+                <td className="status">{lead.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -2,14 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 
 function LeadForm() {
-  const [form, setForm] = useState({
+  const initialForm = {
     name: "",
     phone: "",
     email: "",
     platform: "Amazon",
     message: "",
-  });
+  };
 
+  const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -32,8 +33,16 @@ function LeadForm() {
     if (!validate()) return;
 
     try {
-      await axios.post("https://seller-rocket-sgzb.onrender.com/api/leads", form);
+      await axios.post(
+        "https://seller-rocket-sgzb.onrender.com/api/leads",
+        form
+      );
+
       alert("Lead submitted!");
+
+      // ✅ RESET FORM
+      setForm(initialForm);
+      setErrors({});
     } catch (err) {
       alert("Error submitting form");
     }
@@ -44,22 +53,51 @@ function LeadForm() {
       <h2>Contact Us</h2>
 
       <form onSubmit={handleSubmit}>
-        <input placeholder="Name" onChange={e => setForm({...form, name: e.target.value})} />
-        
-        <input placeholder="Phone" onChange={e => setForm({...form, phone: e.target.value})} />
+        <input
+          placeholder="Name"
+          value={form.name}
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
+        />
+
+        <input
+          placeholder="Phone"
+          value={form.phone}
+          onChange={(e) =>
+            setForm({ ...form, phone: e.target.value })
+          }
+        />
         {errors.phone && <p>{errors.phone}</p>}
 
-        <input placeholder="Email" onChange={e => setForm({...form, email: e.target.value})} />
+        <input
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
+        />
         {errors.email && <p>{errors.email}</p>}
 
-        <select onChange={e => setForm({...form, platform: e.target.value})}>
+        <select
+          value={form.platform}
+          onChange={(e) =>
+            setForm({ ...form, platform: e.target.value })
+          }
+        >
           <option>Amazon</option>
           <option>Flipkart</option>
           <option>Shopify</option>
           <option>WordPress</option>
         </select>
 
-        <textarea placeholder="Message" onChange={e => setForm({...form, message: e.target.value})}></textarea>
+        <textarea
+          placeholder="Message"
+          value={form.message}
+          onChange={(e) =>
+            setForm({ ...form, message: e.target.value })
+          }
+        ></textarea>
 
         <button type="submit">Submit</button>
       </form>

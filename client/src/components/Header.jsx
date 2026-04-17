@@ -6,6 +6,7 @@ function Header() {
         <a href="#">Home</a>
         <a href="#services">Services</a>
         <a href="#form">Contact</a>
+        <a href="#admin">Admin</a>
       </nav>
     </header>
   );
