@@ -36,7 +36,7 @@ function Admin() {
       </select>
 
       {/* Table */}
-      <table border="1" cellPadding="10" style={{ marginTop: "20px" }}>
+      <table border="1" cellPadding="10" style={{ marginTop: "20px" }} cellSpacing={2} minWidth="100%">
         <thead>
           <tr>
             <th>Name</th>
