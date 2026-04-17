@@ -13,6 +13,7 @@ function App() {
       <Services />
       <LeadForm />
       <Footer />
+      <Admin />
     </>
   );
 }
