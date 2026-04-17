@@ -23,7 +23,7 @@ function Admin() {
   }, [platform]);
 
   return (
-    <div className="admin-section">
+    <div id="admin" className="admin-section">
       <h2>Admin - Leads</h2>
 
       <select onChange={(e) => setPlatform(e.target.value)}>
